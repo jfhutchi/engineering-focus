@@ -17,7 +17,7 @@
     "codex",
     "efficiency"
   ],
-  "skills": "../skills/",
+  "skills": "./skills/",
   "interface": {
     "displayName": "Engineering Focus",
     "shortDescription": "Focused engineering-agent execution",
