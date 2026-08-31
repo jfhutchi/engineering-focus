@@ -1,0 +1,41 @@
+schema_version: 1
+modes:
+  STRICT:
+    purpose: bounded engineering execution
+    scope_expansion: none_unless_required
+    context_policy: minimum_relevant
+    retry_policy: strongly_bounded
+    deterministic_validation: preferred
+    artifact_reuse_check: required_when_practical
+    exploratory_generation: false
+    structured_handoff: preferred
+
+  BALANCED:
+    purpose: focused general engineering and research
+    scope_expansion: limited_when_materially_useful
+    context_policy: relevant_with_justified_expansion
+    retry_policy: bounded
+    deterministic_validation: preferred
+    artifact_reuse_check: required_when_practical
+    exploratory_generation: limited
+    structured_handoff: preferred
+
+  EXPLORATORY:
+    purpose: novelty, alternatives, contrarian analysis, hypothesis generation
+    scope_expansion: broad_within_outer_budget
+    context_policy: broader_but_relevant
+    retry_policy: bounded_by_runtime
+    deterministic_validation: deferred_to_validation_stage_when_appropriate
+    artifact_reuse_check: recommended
+    exploratory_generation: true
+    structured_handoff: required_for_downstream_validation
+
+  DISABLED:
+    purpose: compatibility and control baseline
+    scope_expansion: host_default
+    context_policy: host_default
+    retry_policy: host_default
+    deterministic_validation: host_default
+    artifact_reuse_check: host_default
+    exploratory_generation: host_default
+    structured_handoff: host_default

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Engineering Focus"
+  short_description: "Focused, measurable engineering-agent behavior"
+  default_prompt: "Use $engineering-focus in BALANCED mode for this engineering task. Preserve correctness while minimizing unnecessary work."
+
+policy:
+  allow_implicit_invocation: true
+  default_mode: BALANCED

@@ -1,0 +1,52 @@
+schema_version: 1
+policy_name: engineering-focus
+policy_version: 0.1.0-dev
+default_mode: BALANCED
+
+principles:
+  correctness_over_cost: true
+  preserve_safety_and_authorization: true
+  prefer_deterministic_validation: true
+  reuse_valid_artifacts: true
+  explicit_stop_conditions: true
+  structured_handoffs: true
+  context_minimization_with_evidence_preservation: true
+
+escalation_order:
+  - existing_artifact
+  - deterministic_tool
+  - small_or_local_model
+  - general_reasoning_model
+  - high_reasoning_model
+
+stop_states:
+  - COMPLETE
+  - BLOCKED
+  - REJECTED
+  - BUDGET_EXHAUSTED
+  - DEFERRED
+
+runtime_defaults:
+  require_mode_recording: true
+  require_validation_recording: true
+  record_context_escalations: true
+  record_model_escalations: true
+  record_artifact_reuse: true
+  retries:
+    policy: bounded
+    exact_limit: null
+  context:
+    policy: minimum_relevant
+    hard_token_limit: null
+
+quality_policy:
+  token_reduction_alone_is_success: false
+  deterministic_evaluator_preferred: true
+  outcome_based_evaluator_preferred: true
+  llm_judge_only_when_needed: true
+
+security:
+  may_expand_permissions: false
+  may_bypass_host_approval: false
+  exploratory_mode_expands_permissions: false
+  remove_security_context_for_token_savings: false

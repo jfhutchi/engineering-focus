@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jfhutchi/engineering-focus/core/telemetry-schema.json",
+  "title": "Engineering Focus Run Telemetry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "task_class",
+    "mode",
+    "policy_version",
+    "completion_state"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "task_class": {"type": "string", "minLength": 1},
+    "mode": {
+      "type": "string",
+      "enum": ["STRICT", "BALANCED", "EXPLORATORY", "DISABLED"]
+    },
+    "policy_version": {"type": "string", "minLength": 1},
+    "policy_hash": {"type": ["string", "null"]},
+    "model_provider": {"type": ["string", "null"]},
+    "model_id": {"type": ["string", "null"]},
+    "prompt_template_version": {"type": ["string", "null"]},
+    "input_tokens": {"type": ["integer", "null"], "minimum": 0},
+    "output_tokens": {"type": ["integer", "null"], "minimum": 0},
+    "input_context_bytes": {"type": ["integer", "null"], "minimum": 0},
+    "model_calls": {"type": ["integer", "null"], "minimum": 0},
+    "tool_calls": {"type": ["integer", "null"], "minimum": 0},
+    "redundant_tool_calls": {"type": ["integer", "null"], "minimum": 0},
+    "cache_hits": {"type": ["integer", "null"], "minimum": 0},
+    "retries": {"type": ["integer", "null"], "minimum": 0},
+    "revisions": {"type": ["integer", "null"], "minimum": 0},
+    "wall_clock_ms": {"type": ["integer", "null"], "minimum": 0},
+    "estimated_cost": {"type": ["number", "null"], "minimum": 0},
+    "cost_currency": {"type": ["string", "null"]},
+    "context_escalations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reason"],
+        "properties": {
+          "reason": {"type": "string", "minLength": 1},
+          "added_context": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "model_escalations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reason"],
+        "properties": {
+          "from": {"type": ["string", "null"]},
+          "to": {"type": ["string", "null"]},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "validation_result": {
+      "type": ["string", "null"],
+      "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", null]
+    },
+    "quality_score": {"type": ["number", "null"]},
+    "quality_evaluator": {"type": ["string", "null"]},
+    "human_correction_required": {"type": ["boolean", "null"]},
+    "novel_candidates": {"type": ["integer", "null"], "minimum": 0},
+    "downstream_survivors": {"type": ["integer", "null"], "minimum": 0},
+    "completion_state": {
+      "type": "string",
+      "enum": ["COMPLETE", "BLOCKED", "REJECTED", "BUDGET_EXHAUSTED", "DEFERRED"]
+    }
+  }
+}

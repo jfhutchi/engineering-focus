@@ -1,0 +1,35 @@
+{
+  "name": "engineering-focus",
+  "version": "0.1.0-dev",
+  "description": "Vendor-neutral engineering-agent behavior for bounded execution, context discipline, deterministic validation, structured handoffs, and measured efficiency.",
+  "author": {
+    "name": "jfhutchi",
+    "url": "https://github.com/jfhutchi"
+  },
+  "homepage": "https://github.com/jfhutchi/engineering-focus",
+  "repository": "https://github.com/jfhutchi/engineering-focus",
+  "license": "Apache-2.0",
+  "keywords": [
+    "engineering",
+    "agents",
+    "productivity",
+    "skills",
+    "codex",
+    "efficiency"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Engineering Focus",
+    "shortDescription": "Focused engineering-agent execution",
+    "longDescription": "Apply bounded task execution, relevant-context discipline, deterministic validation, reusable artifacts, explicit stop conditions, structured handoffs, and selectable strict, balanced, exploratory, or disabled behavior.",
+    "developerName": "jfhutchi",
+    "category": "Productivity",
+    "capabilities": ["Instructions"],
+    "websiteURL": "https://github.com/jfhutchi/engineering-focus",
+    "defaultPrompt": [
+      "Use engineering-focus in BALANCED mode for this task.",
+      "Use engineering-focus STRICT mode and validate completion.",
+      "Use engineering-focus EXPLORATORY mode to generate alternatives, then recommend focused validation."
+    ]
+  }
+}

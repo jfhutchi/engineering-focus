@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jfhutchi/engineering-focus/core/handoff-schema.json",
+  "title": "Engineering Focus Handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "goal",
+    "mode",
+    "completion_state",
+    "findings",
+    "validation"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "goal": {"type": "string", "minLength": 1},
+    "mode": {
+      "type": "string",
+      "enum": ["STRICT", "BALANCED", "EXPLORATORY", "DISABLED"]
+    },
+    "inputs_used": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "artifacts_checked": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "actions_taken": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "findings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["performed"],
+      "properties": {
+        "performed": {"type": "boolean"},
+        "summary": {"type": ["string", "null"]},
+        "result": {
+          "type": ["string", "null"],
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", null]
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "unresolved_questions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "completion_state": {
+      "type": "string",
+      "enum": ["COMPLETE", "BLOCKED", "REJECTED", "BUDGET_EXHAUSTED", "DEFERRED"]
+    },
+    "recommended_next_action": {"type": ["string", "null"]}
+  }
+}
