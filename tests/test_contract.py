@@ -67,8 +67,7 @@ def test_example_telemetry_validates_against_schema() -> None:
 
 def test_codex_manifest_points_to_existing_skill_directory() -> None:
     manifest = load_json(".codex-plugin/plugin.json")
-    manifest_dir = ROOT / ".codex-plugin"
-    skills_dir = (manifest_dir / manifest["skills"]).resolve()
+    skills_dir = (ROOT / manifest["skills"]).resolve()
     assert skills_dir == (ROOT / "skills").resolve()
     assert (skills_dir / "engineering-focus/SKILL.md").is_file()
 
